@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CompassController : MonoBehaviour
@@ -9,6 +10,10 @@ public class CompassController : MonoBehaviour
     public double prefabLat;
 
     public double prefabLon;
+
+    public TextMeshProUGUI debug1;
+
+    public TextMeshProUGUI debug2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +29,8 @@ public class CompassController : MonoBehaviour
             gpsManager.GetComponent<ScriptGPS>().currentLon,
             prefabLat,
             prefabLon);
+        debug1.text = heading.ToString();
+        debug2.text = bearing.ToString();
         float angle = heading - bearing;
         arrowUI.localRotation = Quaternion.Euler(0,0,angle);
     }

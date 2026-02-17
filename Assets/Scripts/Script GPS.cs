@@ -5,15 +5,15 @@ using UnityEngine.XR.ARFoundation;
 
 public class ScriptGPS : MonoBehaviour
 {
-    private double targetLat = 37.19220614091147;
-    private double targetLon = -3.616657461975105;
+    private double targetLat = 37.192430;
+    private double targetLon = -3.616447;
 
     public float currentLat;
 
     public float currentLon;
 
 
-    public float detectionRadius = 60f;
+    public float detectionRadius = 20f;
 
     private bool isSpawned = false;
     public GameObject prefab;
