@@ -15,7 +15,7 @@ public class ScriptGPS : MonoBehaviour
 
     public float detectionRadius = 20f;
 
-    private bool isSpawned = false;
+    public bool isSpawned = false;
     public GameObject prefab;
 
     private GameObject spawnedObject;
