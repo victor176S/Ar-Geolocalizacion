@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PuzzleLogic : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class PuzzleLogic : MonoBehaviour
 
     public List<int> patron3;
 
+    public bool BotonPulsado1;
+
+    public bool BotonPulsado2;
+
+    public bool BotonPulsado3;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,7 +38,21 @@ public class PuzzleLogic : MonoBehaviour
 
     public void ColorMatch()
     {
+
+        for (int i = 0; i < 3; i++)
+        {
+            
+            if (patronGen1[0] == 0 && BotonPulsado1)
+            {
+            
+                
+
+            }
+
+        }
         
+        
+
     }
 
     public IEnumerator GenerateRandomPatterns()
@@ -52,7 +73,7 @@ public class PuzzleLogic : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            patronGen2.Add(Random.Range(0,3));
+            patronGen3.Add(Random.Range(0,3));
         }
 
         patron3 = patronGen3;
@@ -60,34 +81,24 @@ public class PuzzleLogic : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator BotonesAnimacion(int turno)
+    public void BotonIzq(bool pulsado)
     {
-        switch (turno)
-        {
-            case 1:
+        
+        BotonPulsado1 = pulsado; 
 
-                for (int i = 0; i < patron1.Count; i++)
-                    {
+    }
 
-                        this.gameObject.transform.GetChild(patron1[i]);
+    public void BotonCentro(bool pulsado)
+    {
+        
+       BotonPulsado2 = pulsado; 
 
+    }
 
-                    
-                    }
+    public void BotonDer(bool pulsado)
+    {
+        
+       BotonPulsado3 = pulsado; 
 
-                break;
-
-            case 2:
-
-            case 3:
-            
-            default:
-
-            //waos
-
-                break;
-        }
-
-        yield return null;
     }
 }
