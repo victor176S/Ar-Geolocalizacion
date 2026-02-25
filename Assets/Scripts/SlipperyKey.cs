@@ -20,7 +20,7 @@ public class SlipperyKey : MonoBehaviour
     void Update()
     {
 
-        if(vecesPulsadas > 0)
+        if(vecesPulsadas > 0 && vecesPulsadas < 20)
         {
             if(llave.transform.position.x > 860)
             {
@@ -50,7 +50,7 @@ public class SlipperyKey : MonoBehaviour
             }
         }
 
-        if (vecesPulsadas >= 20)
+        else if (vecesPulsadas == 20)
         {
             llave.gameObject.SetActive(false);
 
@@ -61,13 +61,16 @@ public class SlipperyKey : MonoBehaviour
 
             if(tapaCofre.gameObject.transform.localEulerAngles.x >= 140)
             {
-                SceneManager.LoadScene("Esta escena se tiene que poner");
+                SceneManager.LoadScene(2);
             }
         }
     }
 
     public void PulsarLlave()
     {
-        vecesPulsadas++;
+        if(vecesPulsadas < 20)
+        {
+            vecesPulsadas++;    
+        }
     }
 }
