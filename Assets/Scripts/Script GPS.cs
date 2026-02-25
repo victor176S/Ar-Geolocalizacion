@@ -13,7 +13,7 @@ public class ScriptGPS : MonoBehaviour
     public float currentLon;
 
 
-    public float detectionRadius = 20f;
+    public float detectionRadius = 50f;
 
     public bool isSpawned = false;
     public GameObject prefab;
@@ -22,6 +22,8 @@ public class ScriptGPS : MonoBehaviour
 
     private GameObject spawnedObject;
     public ARRaycastManager raycastManager;
+
+    public int vecesInstanciadas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -91,9 +93,13 @@ public class ScriptGPS : MonoBehaviour
            hits,
            UnityEngine.XR.ARSubsystems.TrackableType.Planes))
         {
-            Instantiate(prefab, hits[0].pose.position, Quaternion.identity);
+            spawnedObject = Instantiate(prefab, hits[0].pose.position, Quaternion.identity);
+
+            vecesInstanciadas++;
 
             brujula.gameObject.SetActive(false);
+
+            isSpawned = true;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,17 +15,23 @@ public class SlipperyKey : MonoBehaviour
     public float velocidadBase = 200f;
     private Vector2 direccion;
     public RectTransform canvasRect;
+    private bool yendoHaciaIzq;
+    private bool yendoHaciaArriba;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         direccion = Random.insideUnitCircle.normalized;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        StartCoroutine(MovimientoLLave());
         
         // if (vecesPulsadas > 0 && vecesPulsadas < 20)
         // {
@@ -66,48 +73,123 @@ public class SlipperyKey : MonoBehaviour
         //     }
         // }
 
-        if(vecesPulsadas > 0 && vecesPulsadas < 20)
+        
+    }
+
+    IEnumerator MovimientoLLave()
+    {
+
+        if(vecesPulsadas >= 0 && vecesPulsadas < 20)
         {
-            if(llave.transform.position.x > 860)
+
+            if (yendoHaciaIzq)
             {
-                llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
+                while (true)
+                {
+                
+                if(llave.transform.position.x > 90)
+                {
+                    llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
+
+                    yield return new WaitForSeconds(0.03f);
+
+                    if (llave.transform.position.x < 90)
+                        {
+                            yendoHaciaIzq = false;
+
+                            break;
+                        }
+                }
+                }
             }
 
-            if(llave.transform.position.x < -860)
+            if (!yendoHaciaIzq)
             {
-                llave.transform.position += new Vector3(1 * (vecesPulsadas / 1.5f), 0, 0);
+                while (true)
+                {
+                
+                if(llave.transform.position.x < 1820)
+                {
+                    llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
+
+                    yield return new WaitForSeconds(0.03f);
+
+                    if (llave.transform.position.x > 1820)
+                        {
+                            yendoHaciaIzq = false;
+
+                            break;
+                        }
+                }
+                }
             }
 
-            if (vecesPulsadas >= 5)
+            if (yendoHaciaArriba)
             {
-                if(llave.transform.position.y > 440)
+                while (true)
+                {
+                
+                if(llave.transform.position.y < 440)
                 {
                     llave.transform.position += new Vector3(0, -1 * (vecesPulsadas / 2), 0);
 
-                }
+                    yield return new WaitForSeconds(0.03f);
 
-                if(llave.transform.position.y < -440)
+                    if (llave.transform.position.y > 440)
+                        {
+                            yendoHaciaIzq = false;
+
+                            break;
+                        }
+                }
+                }
+            }
+
+            if (!yendoHaciaArriba)
+            {
+                while (true)
+                {
+                
+                if(llave.transform.position.y > 85)
                 {
                     llave.transform.position += new Vector3(0, 1 * (vecesPulsadas / 2), 0);
 
+                    yield return new WaitForSeconds(0.03f);
+
+                    if (llave.transform.position.x < 85)
+                        {
+                            yendoHaciaIzq = false;
+
+                            break;
+                        }
                 }
             }
-        }
-
-        else if (vecesPulsadas == 20)
-        {
-            llave.gameObject.SetActive(false);
-
-            if (tapaCofre.gameObject.transform.localEulerAngles.x < 140)
-            {
-                tapaCofre.gameObject.transform.localRotation = Quaternion.Euler(0.5f + tapaCofre.gameObject.transform.localEulerAngles.x, 0,0);
             }
 
-            if(tapaCofre.gameObject.transform.localEulerAngles.x >= 140)
-            {
-                SceneManager.LoadScene(2);
+        
+
+                if (vecesPulsadas == 20)
+                {
+
+                llave.gameObject.SetActive(false);
+
+                if (tapaCofre.gameObject.transform.localEulerAngles.x < 140)
+                {
+                    tapaCofre.gameObject.transform.localRotation = Quaternion.Euler(0.5f + tapaCofre.gameObject.transform.localEulerAngles.x, 0,0);
+                }
+
+                if(tapaCofre.gameObject.transform.localEulerAngles.x >= 140)
+                {
+                
+                    SceneManager.LoadScene(2);
+
+                }
             }
-        }
+
+            }
+        
+
+        
     }
 
     public void PulsarLlave()
