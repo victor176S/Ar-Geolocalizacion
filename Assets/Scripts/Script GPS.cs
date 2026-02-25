@@ -5,8 +5,8 @@ using UnityEngine.XR.ARFoundation;
 
 public class ScriptGPS : MonoBehaviour
 {
-    private double targetLat = 37.192430;
-    private double targetLon = -3.616447;
+    private double targetLat = 37.192384;
+    private double targetLon = -3.616526;
 
     public float currentLat;
 
@@ -17,6 +17,8 @@ public class ScriptGPS : MonoBehaviour
 
     public bool isSpawned = false;
     public GameObject prefab;
+
+    public GameObject brujula;
 
     private GameObject spawnedObject;
     public ARRaycastManager raycastManager;
@@ -90,6 +92,8 @@ public class ScriptGPS : MonoBehaviour
            UnityEngine.XR.ARSubsystems.TrackableType.Planes))
         {
             Instantiate(prefab, hits[0].pose.position, Quaternion.identity);
+
+            brujula.gameObject.SetActive(false);
         }
     }
 }
