@@ -10,45 +10,70 @@ public class SlipperyKey : MonoBehaviour
 
     public GameObject tapaCofre;
 
+    public float velocidadBase = 200f;
+    private Vector2 direccion;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        direccion = Random.insideUnitCircle.normalized;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(vecesPulsadas > 0 && vecesPulsadas < 20)
+        
+        if (vecesPulsadas > 0 && vecesPulsadas < 20)
         {
-            if(llave.transform.position.x > 860)
+            float velocidad = velocidadBase + (vecesPulsadas * 20f);
+
+            llave.transform.position += (Vector3)(direccion * velocidad * Time.deltaTime);
+
+            Vector3 pos = llave.transform.position;
+
+            // Límites X
+            if (pos.x > 860 || pos.x < -860)
             {
-                llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
+                direccion.x *= -1;
             }
 
-            if(llave.transform.position.x < -860)
-            {
-                llave.transform.position += new Vector3(1 * (vecesPulsadas / 1.5f), 0, 0);
-            }
-
+            // Límites Y (solo después de 5 pulsaciones)
             if (vecesPulsadas >= 5)
             {
-                    if(llave.transform.position.y > 440)
-                    {
-                        
-                        llave.transform.position += new Vector3(0, -1 * (vecesPulsadas / 2), 0);
-
-                    }
-
-                    if(llave.transform.position.y < -440)
-                    {
-                        
-                        llave.transform.position += new Vector3(0, 1 * (vecesPulsadas / 2), 0);
-
-                    }
+                if (pos.y > 440 || pos.y < -440)
+                {
+                    direccion.y *= -1;
+                }
             }
         }
+
+        // if(vecesPulsadas > 0 && vecesPulsadas < 20)
+        // {
+        //     if(llave.transform.position.x > 860)
+        //     {
+        //         llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
+        //     }
+
+        //     if(llave.transform.position.x < -860)
+        //     {
+        //         llave.transform.position += new Vector3(1 * (vecesPulsadas / 1.5f), 0, 0);
+        //     }
+
+        //     if (vecesPulsadas >= 5)
+        //     {
+        //         if(llave.transform.position.y > 440)
+        //         {
+        //             llave.transform.position += new Vector3(0, -1 * (vecesPulsadas / 2), 0);
+
+        //         }
+
+        //         if(llave.transform.position.y < -440)
+        //         {
+        //             llave.transform.position += new Vector3(0, 1 * (vecesPulsadas / 2), 0);
+
+        //         }
+        //     }
+        // }
 
         else if (vecesPulsadas == 20)
         {
