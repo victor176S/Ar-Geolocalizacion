@@ -47,9 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlipperyKey
   vecesPulsadas: 0
   llave: {fileID: 1255347380332157219}
-  tapaCofre: {fileID: 0}
-  velocidadBase: 200
-  canvasRect: {fileID: 3703974086566946141}
+  cofre: {fileID: 586250854932275921, guid: a0eeb5bb39ec94148a574cb08001ba5e, type: 3}
 --- !u!1 &652334389679291811
 GameObject:
   m_ObjectHideFlags: 0
