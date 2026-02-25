@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Ar-Geolocalizacion.slnx"
+    "dotnet.defaultSolution": "Ar Web.slnx"
 }
