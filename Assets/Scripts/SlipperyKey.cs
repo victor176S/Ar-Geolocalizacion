@@ -26,25 +26,25 @@ public class SlipperyKey : MonoBehaviour
     void Update()
     {
         
-        if (vecesPulsadas > 0 && vecesPulsadas < 20)
-        {
-            float velocidad = velocidadBase + (vecesPulsadas * 20f);
+        // if (vecesPulsadas > 0 && vecesPulsadas < 20)
+        // {
+        //     float velocidad = velocidadBase + (vecesPulsadas * 20f);
 
-            canvasRect.anchoredPosition += direccion * velocidad * Time.deltaTime;
+        //     canvasRect.anchoredPosition += direccion * velocidad * Time.deltaTime;
 
-            Vector2 pos = canvasRect.anchoredPosition;
+        //     Vector2 pos = canvasRect.anchoredPosition;
 
-            float limiteX = 860f;
-            float limiteY = 440f;
+        //     float limiteX = 860f;
+        //     float limiteY = 440f;
 
-            if (pos.x > limiteX || pos.x < -limiteX)
-                direccion.x *= -1;
+        //     if (pos.x > limiteX || pos.x < -limiteX)
+        //         direccion.x *= -1;
 
-            if (vecesPulsadas >= 5)
-            {
-                if (pos.y > limiteY || pos.y < -limiteY)
-                    direccion.y *= -1;
-            }
+        //     if (vecesPulsadas >= 5)
+        //     {
+        //         if (pos.y > limiteY || pos.y < -limiteY)
+        //             direccion.y *= -1;
+        //     }
 
         //     llave.transform.position += (Vector3)(direccion * velocidad * Time.deltaTime);
 
@@ -66,32 +66,32 @@ public class SlipperyKey : MonoBehaviour
         //     }
         // }
 
-        // if(vecesPulsadas > 0 && vecesPulsadas < 20)
-        // {
-        //     if(llave.transform.position.x > 860)
-        //     {
-        //         llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
-        //     }
+        if(vecesPulsadas > 0 && vecesPulsadas < 20)
+        {
+            if(llave.transform.position.x > 860)
+            {
+                llave.transform.position += new Vector3(-1 * (vecesPulsadas / 1.5f), 0, 0);
+            }
 
-        //     if(llave.transform.position.x < -860)
-        //     {
-        //         llave.transform.position += new Vector3(1 * (vecesPulsadas / 1.5f), 0, 0);
-        //     }
+            if(llave.transform.position.x < -860)
+            {
+                llave.transform.position += new Vector3(1 * (vecesPulsadas / 1.5f), 0, 0);
+            }
 
-        //     if (vecesPulsadas >= 5)
-        //     {
-        //         if(llave.transform.position.y > 440)
-        //         {
-        //             llave.transform.position += new Vector3(0, -1 * (vecesPulsadas / 2), 0);
+            if (vecesPulsadas >= 5)
+            {
+                if(llave.transform.position.y > 440)
+                {
+                    llave.transform.position += new Vector3(0, -1 * (vecesPulsadas / 2), 0);
 
-        //         }
+                }
 
-        //         if(llave.transform.position.y < -440)
-        //         {
-        //             llave.transform.position += new Vector3(0, 1 * (vecesPulsadas / 2), 0);
+                if(llave.transform.position.y < -440)
+                {
+                    llave.transform.position += new Vector3(0, 1 * (vecesPulsadas / 2), 0);
 
-        //         }
-        //     }
+                }
+            }
         }
 
         else if (vecesPulsadas == 20)
