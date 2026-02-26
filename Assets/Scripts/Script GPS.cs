@@ -20,7 +20,7 @@ public class ScriptGPS : MonoBehaviour
 
     public GameObject brujula;
 
-    private GameObject spawnedObject;
+    public GameObject spawnedObject;
     public ARRaycastManager raycastManager;
 
     public int vecesInstanciadas;
@@ -31,6 +31,8 @@ public class ScriptGPS : MonoBehaviour
         UIManager.Instance.MostrarMensaje("Ejecuta Start");
         Input.location.Start();
         Input.compass.enabled = true;
+
+
     }
 
     // Update is called once per frame

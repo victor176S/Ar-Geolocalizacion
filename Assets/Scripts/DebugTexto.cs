@@ -17,9 +17,7 @@ public class DebugTexto : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cosas = GameObject.Find("Cosas a instanciar");
-
-        
+        cosas = GPSTracker.GetComponent<ScriptGPS>().spawnedObject;
     }
 
     // Update is called once per frame
